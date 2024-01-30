@@ -14,6 +14,8 @@ import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
+import edu.wpi.first.wpilibj.ADXRS450_Gyro;
+import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -21,7 +23,16 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 public class Swerve extends SubsystemBase {
     public SwerveDriveOdometry swerveOdometry;
     public SwerveModule[] mSwerveMods;
-    //public Pigeon2 gyro;
+
+    // Gyroscope code
+
+    private static final SPI.Port kGyroPort = SPI.Port.kOnboardCS0;
+    private ADXRS450_Gyro m_gyro = new ADXRS450_Gyro(kGyroPort);
+
+    public void robotInit() {
+        m_gyro.calibrate();
+    }
+   
 
     public Swerve() {
         //gyro = new Pigeon2(Constants.Swerve.pigeonID);

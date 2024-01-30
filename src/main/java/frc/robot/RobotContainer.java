@@ -1,5 +1,6 @@
 package frc.robot;
 
+
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
@@ -17,9 +18,13 @@ import frc.robot.subsystems.*;
  * periodic methods (other than the scheduler calls). Instead, the structure of the robot (including
  * subsystems, commands, and button mappings) should be declared here.
  */
+
 public class RobotContainer {
     /* Controllers */
     private final Joystick driver = new Joystick(0);
+
+    private static final double kAngleSetpoint = 0.0;
+    
 
     /* Drive Controls */
     private final int translationAxis = XboxController.Axis.kLeftY.value;
@@ -74,3 +79,4 @@ public class RobotContainer {
         return new exampleAuto(s_Swerve);
     }
 }
+
