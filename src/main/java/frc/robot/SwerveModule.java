@@ -99,7 +99,7 @@ public class SwerveModule {
         mAngleMotor.getConfigurator().apply(new TalonFXConfiguration());
         mAngleMotor.getConfigurator().apply(Robot.ctreConfigs.swerveAngleFXConfig);
         mAngleMotor.setInverted(Constants.Swerve.angleMotorInvert);
-        mAngleMotor.setNeutralMode(Constants.Swerve.neutralmodevalue);
+        mAngleMotor.setNeutralMode(Constants.Swerve.angleNeutralMode);
         resetToAbsolute();
     }
 
@@ -107,7 +107,7 @@ public class SwerveModule {
         mDriveMotor.getConfigurator().apply(new TalonFXConfiguration());
         mDriveMotor.getConfigurator().apply(Robot.ctreConfigs.swerveDriveFXConfig);
         mDriveMotor.setInverted(Constants.Swerve.driveMotorInvert);
-        mDriveMotor.setNeutralMode(Constants.Swerve.neutralmodevalue);
+        mDriveMotor.setNeutralMode(Constants.Swerve.driveNeutralMode);
         mDriveMotor.setPosition(0);
     }
 
