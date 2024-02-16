@@ -27,8 +27,8 @@ public final class CTREConfigs {
         CurrentLimitsConfigs angleCurrentLimits = new CurrentLimitsConfigs();
         angleCurrentLimits.withSupplyCurrentLimitEnable(
             Constants.Swerve.angleEnableCurrentLimit);
-        // This might need to be .with
-        angleCurrentLimits.withStatorCurrentLimit(
+        // This might need to be .withStatorCurrentLimit
+        angleCurrentLimits.withSupplyCurrentLimit(
             Constants.Swerve.angleContinuousCurrentLimit);
         angleCurrentLimits.withSupplyCurrentThreshold(
             Constants.Swerve.anglePeakCurrentLimit);
@@ -45,8 +45,8 @@ public final class CTREConfigs {
         CurrentLimitsConfigs driveCurrentLimits = new CurrentLimitsConfigs();
         driveCurrentLimits.withSupplyCurrentLimitEnable(
             Constants.Swerve.driveEnableCurrentLimit);
-        // This might need to be .with
-        driveCurrentLimits.withStatorCurrentLimit(
+        // This might need to be .withStatorCurrentLimit
+        driveCurrentLimits.withSupplyCurrentLimit(
             Constants.Swerve.driveContinuousCurrentLimit);
         driveCurrentLimits.withSupplyCurrentThreshold(
             Constants.Swerve.drivePeakCurrentLimit);
