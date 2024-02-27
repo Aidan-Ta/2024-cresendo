@@ -44,6 +44,7 @@ public final class Constants {
         /* Angle Encoder Invert */
         public static final boolean canCoderInvert = chosenModule.canCoderInvert;
 
+
         /* Swerve Current Limiting */
         public static final int angleContinuousCurrentLimit = 25;
         public static final int anglePeakCurrentLimit = 40;
@@ -64,7 +65,7 @@ public final class Constants {
         public static final double angleKP = chosenModule.angleKP;
         public static final double angleKI = chosenModule.angleKI;
         public static final double angleKD = chosenModule.angleKD;
-        public static final double angleKF = chosenModule.angleKF;
+        public static final double angleKV = chosenModule.angleKV;
 
         /* Drive Motor PID Values */
         public static final double driveKP = 0.05; //TODO: This must be tuned to specific robot
@@ -76,17 +77,17 @@ public final class Constants {
          * Divide SYSID values by 12 to convert from volts to percent output for CTRE */
         public static final double driveKS = (0.32 / 12); //TODO: This must be tuned to specific robot
         public static final double driveKV = (1.51 / 12);
-        public static final double driveKA = (0.27 / 12);
+        public static final double driveKA = (0.27 / 12); 
 
         /* Swerve Profiling Values */
         /** Meters per Second */
-        public static final double maxSpeed = 4.5; //TODO: This must be tuned to specific robot
+        public static final double maxSpeed = 0.5; //TODO: This must be tuned to specific robot
         /** Radians per Second */
         public static final double maxAngularVelocity = 10.0; //TODO: This must be tuned to specific robot
 
         /* Neutral Modes */
-        public static final NeutralModeValue angleNeutralMode = NeutralModeValue.Coast;
-        public static final NeutralModeValue driveNeutralMode = NeutralModeValue.Brake;
+        public static NeutralModeValue angleNeutralMode = NeutralModeValue.Coast; // was final removed for test
+        public static NeutralModeValue driveNeutralMode = NeutralModeValue.Brake; // was final removed for test
 
         /* Module Specific Constants */
         /* Front Left Module - Module 0 */
@@ -111,7 +112,7 @@ public final class Constants {
         
         /* Back Left Module - Module 2 */
         public static final class Mod2 { //TODO: This must be tuned to specific robot
-            public static final int driveMotorID = 100;
+            public static final int driveMotorID = 0;
             public static final int angleMotorID = 2;
             public static final int canCoderID = 16; //16
             public static final Rotation2d angleOffset = Rotation2d.fromDegrees(80.0); /* 45.0 - value on 1/11/2024 */
@@ -123,7 +124,7 @@ public final class Constants {
         public static final class Mod3 { //TODO: This must be tuned to specific robot
             public static final int driveMotorID = 3;
             public static final int angleMotorID = 7;
-            public static final int canCoderID = 15; //15
+            public static final int canCoderID = 15; //15 X 56654r muysz cfghjnm g567uygft67867oyuhgbvcx awfr4yt
             public static final Rotation2d angleOffset = Rotation2d.fromDegrees(358.0); /* 358.0 - value on 1/11/2024 */
             public static final SwerveModuleConstants constants = 
                 new SwerveModuleConstants(driveMotorID, angleMotorID, canCoderID, angleOffset);

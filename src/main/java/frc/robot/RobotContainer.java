@@ -26,7 +26,7 @@ public class RobotContainer {
     private final int rotationAxis = XboxController.Axis.kRightX.value;
 
     /* Driver Buttons */
-    private final JoystickButton zeroGyro = new JoystickButton(driver, XboxController.Button.kY.value);
+    //private final JoystickButton zeroGyro = new JoystickButton(driver, XboxController.Button.kY.value);
     private final JoystickButton robotCentric = new JoystickButton(driver, XboxController.Button.kLeftBumper.value);
 
     /* Subsystems */
@@ -39,11 +39,11 @@ public class RobotContainer {
             new TeleopSwerve(
                 s_Swerve, 
                 // forward and backward
-                () -> -driver.getRawAxis(translationAxis)/1.5, //these variables can be used for controller speed adjustment, make sure to change both!
+                () -> -driver.getRawAxis(translationAxis)/5.5, //these variables can be used for controller speed adjustment, make sure to change both!
                 // forward and backward  
-                () -> -driver.getRawAxis(strafeAxis)/1.5, 
+                () -> -driver.getRawAxis(strafeAxis)/5.5, 
                 // turning   
-                () -> -driver.getRawAxis(rotationAxis), 
+                () -> -driver.getRawAxis(rotationAxis)/3.0, 
                 () -> robotCentric.getAsBoolean()
             )
         );

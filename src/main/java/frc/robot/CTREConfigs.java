@@ -39,7 +39,7 @@ public final class CTREConfigs {
         swerveAngleFXConfig.Slot0.kP = Constants.Swerve.angleKP;
         swerveAngleFXConfig.Slot0.kI = Constants.Swerve.angleKI;
         swerveAngleFXConfig.Slot0.kD = Constants.Swerve.angleKD;
-        swerveAngleFXConfig.Slot0.kS = Constants.Swerve.angleKF;
+        swerveAngleFXConfig.Slot0.kV = Constants.Swerve.angleKV;
         swerveAngleFXConfig.CurrentLimits = angleCurrentLimits;
 
         /* Swerve Drive Motor Configuration */
@@ -57,7 +57,7 @@ public final class CTREConfigs {
         swerveDriveFXConfig.Slot0.kP = Constants.Swerve.driveKP;
         swerveDriveFXConfig.Slot0.kI = Constants.Swerve.driveKI;
         swerveDriveFXConfig.Slot0.kD = Constants.Swerve.driveKD;
-        swerveDriveFXConfig.Slot0.kS = Constants.Swerve.driveKS;  // was kF      
+        swerveDriveFXConfig.Slot0.kS = Constants.Swerve.driveKS;       
         swerveDriveFXConfig.CurrentLimits = driveCurrentLimits;
         /* Swerve Open Loop Ramp Configuration */
         OpenLoopRampsConfigs openLoopRampConfig = new OpenLoopRampsConfigs();

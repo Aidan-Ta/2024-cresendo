@@ -8,7 +8,8 @@ public class Conversions {
      * @return Degrees of Rotation of Mechanism
      */
     public static double CANcoderToDegrees(double positionCounts, double gearRatio) {
-        return positionCounts * (360.0 / (gearRatio * 4096.0));
+        return positionCounts * (360.0 / (gearRatio * 4096.0)); // first value
+        /*                       360.0                4096.0   prevoius values*/
     }
 
     /**
@@ -18,6 +19,7 @@ public class Conversions {
      */
     public static double degreesToCANcoder(double degrees, double gearRatio) {
         return degrees / (360.0 / (gearRatio * 4096.0));
+        /*                360.0                4096.0   prevoius values*/
     }
 
     /**
@@ -27,6 +29,7 @@ public class Conversions {
      */
     public static double falconToDegrees(double positionCounts, double gearRatio) {
         return positionCounts * (360.0 / (gearRatio * 2048.0));
+        /*               360.0              2048.0 */
     }
 
     /**
@@ -35,7 +38,8 @@ public class Conversions {
      * @return Falcon Position Counts
      */
     public static double degreesToFalcon(double degrees, double gearRatio) {
-        return degrees / (360.0 / (gearRatio * 2048.0));
+        return degrees / (360.0/ (gearRatio * 2048.0));
+        /*                value same           value same */
     }
 
     /**
