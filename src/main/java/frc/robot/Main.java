@@ -1,3 +1,15 @@
+/* 
+ * Kudos To:
+ * Aidan Tarte
+ * Robert Tarte
+ * Nathan Lie
+ * Cosimo Aho
+ * Barry 
+ * Sebsatian Chai
+ * and whoever orginally created this code...
+ */
+
+
 // Copyright (c) FIRST and other WPILib contributors.
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.

@@ -43,7 +43,7 @@ public class RobotContainer {
                 // forward and backward  
                 () -> -driver.getRawAxis(strafeAxis)/5.5, 
                 // turning   
-                () -> -driver.getRawAxis(rotationAxis)/3.0, 
+                () -> -driver.getRawAxis(rotationAxis), 
                 () -> robotCentric.getAsBoolean()
             )
         );

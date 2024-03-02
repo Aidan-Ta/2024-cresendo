@@ -16,9 +16,8 @@ import com.ctre.phoenix6.controls.VelocityDutyCycle;
 import com.ctre.phoenix6.controls.PositionDutyCycle;
 import com.ctre.phoenix6.controls.PositionVoltage;
 import com.ctre.phoenix6.hardware.TalonFX;
-import com.ctre.phoenix6.hardware.CANcoder;
-
-//import com.kauailabs.navx.frc.AHRS; 
+import com.ctre.phoenix6.signals.AbsoluteSensorRangeValue;
+import com.ctre.phoenix6.hardware.CANcoder; 
 
 public class SwerveModule {
     public int moduleNumber;
@@ -57,9 +56,12 @@ public class SwerveModule {
 
     public void setDesiredState(SwerveModuleState desiredState, boolean isOpenLoop){
         /* This is a custom optimize function, since default WPILib optimize assumes continuous controller which CTRE and Rev onboard is not */
-        desiredState = SwerveModuleState.optimize(desiredState, getState().angle); 
-        setAngle(desiredState);
-        setSpeed(desiredState, isOpenLoop);
+        SwerveModuleState optDesiredState = CTREModuleState.optimize(desiredState, getState().angle); 
+        setAngle(optDesiredState);
+        setSpeed(optDesiredState, isOpenLoop);
+        System.out.println("desiredstate.angle" + desiredState.angle);
+        System.out.println("optimized desiredstate.angle" + optDesiredState.angle);
+        System.out.println("getState.angle" + getState().angle);
     }
 
     private void setSpeed(SwerveModuleState desiredState, boolean isOpenLoop){
@@ -103,7 +105,7 @@ public class SwerveModule {
     }
 
     public Rotation2d getCanCoder(){
-      return Rotation2d.fromRotations(angleEncoder.getAbsolutePosition().refresh().getValue());
+      return Rotation2d.fromRotations(angleEncoder.getPosition().refresh().getValue());
     }
 
     public void resetToAbsolute(){
@@ -112,8 +114,15 @@ public class SwerveModule {
     }
 
     private void configAngleEncoder(){        
+        /* 
         angleEncoder.getConfigurator().apply(new CANcoderConfiguration());
         angleEncoder.getConfigurator().apply(Robot.ctreConfigs.swerveCanCoderConfig);
+        */
+        CANcoderConfiguration swerveCANCoderConfig = new CANcoderConfiguration();
+        swerveCANCoderConfig.MagnetSensor.MagnetOffset = this.angleOffset.getDegrees();
+        swerveCANCoderConfig.MagnetSensor.SensorDirection = Constants.Swerve.canCoderInvert;
+        swerveCANCoderConfig.MagnetSensor.AbsoluteSensorRange = AbsoluteSensorRangeValue.Signed_PlusMinusHalf;
+        angleEncoder.getConfigurator().apply(swerveCANCoderConfig);
     }
 
     private void configAngleMotor(){

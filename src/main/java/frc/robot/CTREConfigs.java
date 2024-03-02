@@ -70,14 +70,12 @@ public final class CTREConfigs {
         swerveDriveFXConfig.ClosedLoopRamps = closedLoopRampConfig;
         
         /* Swerve CANCoder Configuration */
-        MagnetSensorConfigs magnetSensorConfig = new MagnetSensorConfigs()
-            .withAbsoluteSensorRange(AbsoluteSensorRangeValue.Signed_PlusMinusHalf);
-        swerveCanCoderConfig.withMagnetSensor(magnetSensorConfig);
-       // swerveCanCoderConfig.SensorDirectionValue = Constants.Swerve.canCoderInvert;
-       // swerveCanCoderConfig.SensorInitializationStrategy= SensorInitializationStrategy.BootToAbsolutePosition; 
-       // initalaztion is not needed anymore
         //swerveCanCoderConfig.sensorTimeBase = SensorTimeBase.PerSecond;
 
+
+        
+        swerveCanCoderConfig.MagnetSensor.SensorDirection = Constants.Swerve.canCoderInvert;
+        swerveCanCoderConfig.MagnetSensor.AbsoluteSensorRange = AbsoluteSensorRangeValue.Signed_PlusMinusHalf;
         
     }
 }
