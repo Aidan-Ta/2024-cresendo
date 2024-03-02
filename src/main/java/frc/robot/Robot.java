@@ -4,10 +4,13 @@
 
 package frc.robot;
 
+import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
-
+import frc.robot.autos.exampleAuto;
+import frc.robot.autos.exampleAuto1;
+import frc.robot.autos.exampleAuto2;
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
  * each mode, as described in the TimedRobot documentation. If you change the name of this class or
@@ -59,21 +62,33 @@ public class Robot extends TimedRobot {
 
   /** This autonomous runs the autonomous command selected by your {@link RobotContainer} class. */
   @Override
-  public void autonomousInit() {
-    m_autonomousCommand = m_robotContainer.getAutonomousCommand();
-
-    // schedule the autonomous command (example)
-    if (m_autonomousCommand != null) {
-      m_autonomousCommand.schedule();
-    }
+  public void autonomousInit() { 
   }
 
   /** This function is called periodically during autonomous. */
   @Override
   public void autonomousPeriodic() {
-    
-  }
+        Double tv;
+        Double tid;
+        Double ta;
 
+       tid = NetworkTableInstance.getDefault().getTable("limelight").getEntry("tid").getDouble(0.0);
+
+       tv = NetworkTableInstance.getDefault().getTable("limelight").getEntry("tv").getDouble(0.0);
+
+        ta = NetworkTableInstance.getDefault().getTable("limelight").getEntry("ta").getDouble(0.0);
+        if (tv == 1.0);
+        while (ta> 66 && (tid==5||tid==6)){}
+
+        
+        
+        ta = NetworkTableInstance.getDefault().getTable("limelight").getEntry("ta").getDouble(0.0);
+        while (ta< 33 && (tid==5||tid==6)){}
+
+        
+
+        ta = NetworkTableInstance.getDefault().getTable("limelight").getEntry("ta").getDouble(0.0);
+  }
   @Override
   public void teleopInit() {
     // This makes sure that the autonomous stops running when
