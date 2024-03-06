@@ -16,25 +16,25 @@ public final class ShooterConstants {
   public static class OperatorConstants {
     // Port numbers for driver and operator gamepads. These correspond with the numbers on the USB
     // tab of the DriverStation
-    public static final int kDriverControllerPort = 0;
-    public static final int kOperatorControllerPort = 1;
+    public static final int kDriverControllerPort = 1;
+    public static final int kOperatorControllerPort = 0;
   }
 
   public static class LauncherConstants {
     // PWM ports/CAN IDs for motor controllers
-    public static final int kFeederID = 22;
-    public static final int kLauncherID = 21;
+    public static final int kFeederID = 21;
+    public static final int kLauncherID = 22;
 
     // Current limit for launcher and feed wheels
-    public static final int kLauncherCurrentLimit = 80;
-    public static final int kFeedCurrentLimit = 80;
+    public static final int kLauncherCurrentLimit = 100;
+    public static final int kFeedCurrentLimit = 100;
 
     // Speeds for wheels when intaking and launching. Intake speeds are negative to run the wheels
     // in reverse
-    public static final double kLauncherSpeed = 10;
-    public static final double kLaunchFeederSpeed = 10;
-    public static final double kIntakeLauncherSpeed = -1;
-    public static final double kIntakeFeederSpeed = -.2;
+    public static final double kLauncherSpeed = 100;
+    public static final double kLaunchFeederSpeed = 100;
+    public static final double kIntakeLauncherSpeed = -6;
+    public static final double kIntakeFeederSpeed = -.6;
 
     public static final double kLauncherDelay = 1;
   }
