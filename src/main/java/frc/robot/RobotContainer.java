@@ -30,7 +30,9 @@ public class RobotContainer {
   private final ShooterContainer myshooter = new ShooterContainer(); 
   private final CommandSwerveDrivetrain drivetrain = TunerConstants.DriveTrain; // My drivetrain
 
-  private Command runAuto1 = drivetrain.getAutoPath("Tests");
+  private Command runAuto1 = drivetrain.getAutoPath("middle");
+  private Command runAuto2 = drivetrain.getAutoPath("right");
+  private Command runAuto3 = drivetrain.getAutoPath("left");
 
   private final SwerveRequest.FieldCentric drive = new SwerveRequest.FieldCentric()
       .withDeadband(MaxSpeed * 0.1).withRotationalDeadband(MaxAngularRate * 0.1) // Add a 10% deadband
