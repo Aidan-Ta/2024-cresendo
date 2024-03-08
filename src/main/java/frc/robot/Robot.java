@@ -9,8 +9,6 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 
 import frc.robot.Shooter.ShooterContainer;
-import frc.robot.Shooter.ShooterConstants;
-import frc.robot.Shooter.ShooterContainer;
 
 public class Robot extends TimedRobot {
   private Command m_autonomousCommand;
@@ -21,6 +19,7 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit() {
     m_robotContainer = new RobotContainer();
+    m_operatorController = new ShooterContainer();
   }
 
   @Override

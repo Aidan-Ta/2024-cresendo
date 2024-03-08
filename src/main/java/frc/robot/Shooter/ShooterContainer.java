@@ -9,6 +9,10 @@ import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.Shooter.ShooterConstants.LauncherConstants;
 import frc.robot.Shooter.ShooterConstants.OperatorConstants;
+<<<<<<< HEAD
+=======
+import frc.robot.Shooter.Autos;
+>>>>>>> 0202b7d (at compition)
 import frc.robot.commands.LaunchNote;
 import frc.robot.commands.PrepareLaunch;
 /*import frc.robot.subsystems.PWMDrivetrain;

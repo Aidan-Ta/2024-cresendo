@@ -4,6 +4,21 @@
 
 package frc.robot;
 
+/* CONTRIBUTORS: 
+Students:
+ Aidan Tarte
+ Cosimo Aho
+Coaches:
+ Barry
+ Rob Tarte
+ Nathan Lie
+
+
+
+ Created by members of Gator Gears, Team 4973 with some help from generated code.
+*/
+
+
 import edu.wpi.first.wpilibj.RobotBase;
 
 public final class Main {
