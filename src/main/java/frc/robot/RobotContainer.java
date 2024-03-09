@@ -41,6 +41,10 @@ public class RobotContainer {
   //private final CommandXboxController Joystick_2 = new CommandXboxController(1); // creates another instance of joystick for when two are plugged in.
   private final CommandSwerveDrivetrain drivetrain = TunerConstants.DriveTrain; // My drivetrain
 
+  private Command runAuto1 = drivetrain.getAutoPath("middle");
+  private Command runAuto2 = drivetrain.getAutoPath("right");
+  private Command runAuto3 = drivetrain.getAutoPath("left");
+
   private final SwerveRequest.FieldCentric drive = new SwerveRequest.FieldCentric()
       .withDeadband(MaxSpeed * 0.1).withRotationalDeadband(MaxAngularRate * 0.50) // Add a 10% deadband
       .withDriveRequestType(DriveRequestType.OpenLoopVoltage); // I want field-centric
@@ -86,6 +90,6 @@ public class RobotContainer {
  
   public Command getAutonomousCommand() {
     return Commands.print("No autonomous command configured");
-    //return Commands.print("No autonomous command configured");
+    //return runAuto1;
   }
 }
