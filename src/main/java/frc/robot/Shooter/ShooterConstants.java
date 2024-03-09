@@ -36,11 +36,7 @@ public final class ShooterConstants {
     public static final double kIntakeLauncherSpeed = -6;
     public static final double kIntakeFeederSpeed = -.6;
 
-<<<<<<< HEAD
     public static final double kLauncherDelay = 3;
-=======
-    public static final double kLauncherDelay = 1;
->>>>>>> 0202b7d (at compition)
   }
 }
 

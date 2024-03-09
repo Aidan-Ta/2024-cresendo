@@ -4,8 +4,6 @@
 
 package frc.robot;
 
-<<<<<<< HEAD
-=======
 import frc.robot.Shooter.ShooterContainer;
 import frc.robot.commands.LaunchNote;
 import frc.robot.commands.PrepareLaunch;
@@ -14,7 +12,6 @@ import frc.robot.Shooter.ShooterConstants.LauncherConstants;
 
 import static frc.robot.Shooter.ShooterConstants.LauncherConstants.kLaunchFeederSpeed;
 
->>>>>>> 0202b7d (at compition)
 import com.ctre.phoenix6.Utils;
 import com.ctre.phoenix6.mechanisms.swerve.SwerveRequest;
 import com.ctre.phoenix6.mechanisms.swerve.SwerveModule.DriveRequestType;
@@ -23,21 +20,11 @@ import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.wpilibj.Joystick;
-<<<<<<< HEAD
-=======
 import edu.wpi.first.wpilibj.XboxController;
->>>>>>> 0202b7d (at compition)
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
-<<<<<<< HEAD
-import frc.robot.Shooter.ShooterContainer;
-import frc.robot.generated.TunerConstants;
-
-public class RobotContainer {
-  private final Joystick driver = new Joystick(0);
-=======
 import frc.robot.generated.TunerConstants; 
 
 //import frc.robot.Arms.ArmContainer;
@@ -45,19 +32,13 @@ import frc.robot.generated.TunerConstants;
 public class RobotContainer {
   private final Joystick Rdriver = new Joystick(1);
   private final Joystick Ldriver = new Joystick(0); 
->>>>>>> 0202b7d (at compition)
 
   private double MaxSpeed = TunerConstants.kSpeedAt12VoltsMps; // kSpeedAt12VoltsMps desired top speed
   private double MaxAngularRate = 1.5 * Math.PI; // 3/4 of a rotation per second max angular velocity
 
   /* Setting up bindings for necessary control of the swerve drive platform */
-<<<<<<< HEAD
-  private final CommandXboxController joystick = new CommandXboxController(0); // My joystick
-  private final ShooterContainer myshooter = new ShooterContainer(); 
-=======
   private final CommandXboxController lJoystick = new CommandXboxController(0); // My joystick
   //private final CommandXboxController Joystick_2 = new CommandXboxController(1); // creates another instance of joystick for when two are plugged in.
->>>>>>> 0202b7d (at compition)
   private final CommandSwerveDrivetrain drivetrain = TunerConstants.DriveTrain; // My drivetrain
 
   private final SwerveRequest.FieldCentric drive = new SwerveRequest.FieldCentric()
@@ -68,32 +49,17 @@ public class RobotContainer {
   private final SwerveRequest.PointWheelsAt point = new SwerveRequest.PointWheelsAt();
   private final Telemetry logger = new Telemetry(MaxSpeed);
 
-<<<<<<< HEAD
-  private void configureBindings() {
-    drivetrain.setDefaultCommand( // Drivetrain will execute this command periodically
-        drivetrain.applyRequest(() -> drive.withVelocityX(-joystick.getLeftY() * MaxSpeed) // Drive forward with
-                                                                                           // negative Y (forward)
-            .withVelocityY(-joystick.getLeftX() * MaxSpeed) // Drive left with negative X (left)
-            .withRotationalRate(-joystick.getRightX() * MaxAngularRate) // Drive counterclockwise with negative X (left)
-        ));
-
-    //joystick.a().whileTrue(drivetrain.applyRequest(() -> brake));
-   // joystick.b().whileTrue(drivetrain
-    //    .applyRequest(() -> point.withModuleDirection(new Rotation2d(-joystick.getLeftY(), -joystick.getLeftX()))));
-
-    // reset the field-centric heading on left bumper press
-    joystick.leftBumper().onTrue(drivetrain.runOnce(() -> drivetrain.seedFieldRelative()));
-=======
-  private static final double kSpeedDiv =  2.0; // Value for controlling controller sensitivity
+  public static final double kDSpeedDiv =  1.0; // Value for controlling controller sensitivity
+  public static final double kAAngleDiv =  0.25; // Value for controlling controller sensitivity
 
   private void configureBindings() {
     drivetrain.setDefaultCommand( // Drivetrain will execute this command periodically
         drivetrain.applyRequest(()  ->  {
           System.out.println("joystick.getRightX=" + -lJoystick.getRightX() );
-           return drive.withVelocityX(-lJoystick.getLeftY() * MaxSpeed) // Drive forward with
+           return drive.withVelocityX(-lJoystick.getLeftY() * MaxSpeed/kDSpeedDiv) // Drive forward with
                                                                                            // negative Y (forward)
-            .withVelocityY(-lJoystick.getLeftX() * MaxSpeed) // Drive left with negative X (left)
-            .withRotationalRate(-lJoystick.getRightX()/kSpeedDiv * MaxAngularRate/kSpeedDiv);
+            .withVelocityY(-lJoystick.getLeftX() * MaxSpeed/kDSpeedDiv) // Drive left with negative X (left)
+            .withRotationalRate(-lJoystick.getRightX()/kAAngleDiv * MaxAngularRate);
             
          } // Drive counterclockwise with negative X (left)
         ));
@@ -106,7 +72,6 @@ public class RobotContainer {
 
     // reset the field-centric heading on left bumper press
     //joystick.leftBumper().onTrue(drivetrain.runOnce(() -> drivetrain.seedFieldRelative()));
->>>>>>> 0202b7d (at compition)
 
     if (Utils.isSimulation()) {
       drivetrain.seedFieldRelative(new Pose2d(new Translation2d(), Rotation2d.fromDegrees(90)));
@@ -118,8 +83,9 @@ public class RobotContainer {
   public RobotContainer() {
     configureBindings();
   }
-
+ 
   public Command getAutonomousCommand() {
     return Commands.print("No autonomous command configured");
+    //return Commands.print("No autonomous command configured");
   }
 }
