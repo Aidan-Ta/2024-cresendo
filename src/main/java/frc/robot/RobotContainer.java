@@ -89,6 +89,9 @@ public class RobotContainer {
   }
  
   public Command getAutonomousCommand() {
-    return runAuto1;
+    //return runAuto1;
+    SwerveRequest driveForward = new SwerveRequest.RobotCentric().withVelocityX(.5);
+
+    return drivetrain.run(() -> drivetrain.setControl(driveForward));
   }
 }
