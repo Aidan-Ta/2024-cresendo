@@ -19,11 +19,17 @@ import edu.wpi.first.wpilibj2.command.SwerveControllerCommand;
 
 public class exampleAuto extends SequentialCommandGroup {
     public exampleAuto(Swerve s_Swerve){
+
+         public static final SwerveDriveKinematics swerveKinematics = new SwerveDriveKinematics(
+            new Translation2d(wheelBase / 2.0, trackWidth / 2.0),
+            new Translation2d(wheelBase / 2.0, -trackWidth / 2.0),
+            new Translation2d(-wheelBase / 2.0, trackWidth / 2.0),
+            new Translation2d(-wheelBase / 2.0, -trackWidth / 2.0));
+
         TrajectoryConfig config =
             new TrajectoryConfig(
-                    Constants.AutoConstants.kMaxSpeedMetersPerSecond,
-                    Constants.AutoConstants.kMaxAccelerationMetersPerSecondSquared)
-                .setKinematics(Constants.Swerve.swerveKinematics);
+		3, 3)
+                .setKinematics(swerveKinematics);
 
         // An example trajectory to follow.  All units in meters.
         Trajectory exampleTrajectory =
@@ -38,7 +44,7 @@ public class exampleAuto extends SequentialCommandGroup {
 
         var thetaController =
             new ProfiledPIDController(
-                Constants.AutoConstants.kPThetaController, 0, 0, Constants.AutoConstants.kThetaControllerConstraints);
+                AutoConstants.kPThetaController, 0, 0, AutoConstants.kThetaControllerConstraints);
         thetaController.enableContinuousInput(-Math.PI, Math.PI);
 
         SwerveControllerCommand swerveControllerCommand =
@@ -46,8 +52,8 @@ public class exampleAuto extends SequentialCommandGroup {
                 exampleTrajectory,
                 s_Swerve::getPose,
                 Constants.Swerve.swerveKinematics,
-                new PIDController(Constants.AutoConstants.kPXController, 0, 0),
-                new PIDController(Constants.AutoConstants.kPYController, 0, 0),
+                new PIDController(AutoConstants.kPXController, 0, 0),
+                new PIDController(AutoConstants.kPYController, 0, 0),
                 thetaController,
                 s_Swerve::setModuleStates,
                 s_Swerve);
@@ -57,5 +63,20 @@ public class exampleAuto extends SequentialCommandGroup {
             new InstantCommand(() -> s_Swerve.resetOdometry(exampleTrajectory.getInitialPose())),
             swerveControllerCommand
         );
+    }
+    public static final class AutoConstants { //TODO: The below constants are used in the example auto, and must be tuned to specific robot
+        public static final double kMaxSpeedMetersPerSecond = 3;
+        public static final double kMaxAccelerationMetersPerSecondSquared = 3;
+        public static final double kMaxAngularSpeedRadiansPerSecond = Math.PI;
+        public static final double kMaxAngularSpeedRadiansPerSecondSquared = Math.PI;
+
+        public static final double kPXController = 1;
+        public static final double kPYController = 1;
+        public static final double kPThetaController = 1;
+
+        /* Constraint for the motion profilied robot angle controller */
+        public static final TrapezoidProfile.Constraints kThetaControllerConstraints =
+            new TrapezoidProfile.Constraints(
+                kMaxAngularSpeedRadiansPerSecond, kMaxAngularSpeedRadiansPerSecondSquared);
     }
 }
