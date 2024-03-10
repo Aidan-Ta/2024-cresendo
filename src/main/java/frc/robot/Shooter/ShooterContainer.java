@@ -53,10 +53,11 @@ public class ShooterContainer {
                 .withTimeout(LauncherConstants.kLauncherDelay)
                 .andThen(new LaunchNote(m_launcher))
                 .handleInterrupt(() -> m_launcher.stop()));
+                System.out.println("Shooter Has Been Fired!"); // print Shooter Fired! in terminal
 
     // Set up a binding to run the intake command while the operator is pressing and holding the
     // left Bumper
-    m_operatorController.leftBumper().whileTrue(m_launcher.getIntakeCommand());
+    m_operatorController.leftBumper().whileTrue(m_launcher.getIntakeCommand() /*System.out.println("Intake Command Recived" ) */);
   }
 
   /**

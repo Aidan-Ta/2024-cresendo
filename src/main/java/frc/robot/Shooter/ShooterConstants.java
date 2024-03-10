@@ -19,7 +19,6 @@ public final class ShooterConstants {
     public static final int kDriverControllerPort = 1;
     public static final int kOperatorControllerPort = 0;
   }
-
   public static class LauncherConstants {
     // PWM ports/CAN IDs for motor controllers
     public static final int kFeederID = 21;
@@ -36,7 +35,7 @@ public final class ShooterConstants {
     public static final double kIntakeLauncherSpeed = -6;
     public static final double kIntakeFeederSpeed = -.6;
 
-    public static final double kLauncherDelay = 3;
+    public static final double kLauncherDelay = 2;
   }
 }
 
