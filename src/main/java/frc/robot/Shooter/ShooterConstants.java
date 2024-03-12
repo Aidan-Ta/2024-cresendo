@@ -32,8 +32,8 @@ public final class ShooterConstants {
     // in reverse
     public static final double kLauncherSpeed = 100;
     public static final double kLaunchFeederSpeed = 100;
-    public static final double kIntakeLauncherSpeed = -6;
-    public static final double kIntakeFeederSpeed = -.6;
+    public static final double kIntakeLauncherSpeed = -1;
+    public static final double kIntakeFeederSpeed = -.1; // values were prev -.6
 
     public static final double kLauncherDelay = 2;
   }

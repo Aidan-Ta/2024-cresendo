@@ -40,7 +40,7 @@ public class RobotContainer {
   private final TalonFX rClimber = new TalonFX(30);
 
   private double MaxSpeed = TunerConstants.kSpeedAt12VoltsMps; // kSpeedAt12VoltsMps desired top speed
-  private double MaxAngularRate = 1.25 * Math.PI; // 3/4 of a rotation per second max angular velocity
+  private double MaxAngularRate =(1.25/3.0) * Math.PI; // 62% of a rotation per second max angular velocity
 
   /* Setting up bindings for necessary control of the swerve drive platform */
   public final CommandXboxController lJoystick = new CommandXboxController(0); // My joystick
@@ -52,15 +52,14 @@ public class RobotContainer {
   private Command runAuto3 = drivetrain.getAutoPath("left path");
 
   private final SwerveRequest.FieldCentric drive = new SwerveRequest.FieldCentric()
-      .withDeadband(MaxSpeed * 0.1).withRotationalDeadband(MaxAngularRate * 0.50) // Add a 10% deadband
+      .withDeadband(MaxSpeed * 0.1).withRotationalDeadband(MaxAngularRate * 0.25) // Add a 10% deadband
       .withDriveRequestType(DriveRequestType.OpenLoopVoltage); // I want field-centric
                                                                // driving in open loop
   private final SwerveRequest.SwerveDriveBrake brake = new SwerveRequest.SwerveDriveBrake();
   private final SwerveRequest.PointWheelsAt point = new SwerveRequest.PointWheelsAt();
   private final Telemetry logger = new Telemetry(MaxSpeed);
 
-  public static final double kDSpeedDiv =  1.3; // Value for controlling controller drive axis (top stick) sensitivity
-  public static final double kAAngleDiv =  0.25; // Value for controlling controller angle axis (bottom stick0) sensitivity
+  private static final double kDSpeedDiv =  1.3; // Value for controlling controller drive axis (top stick) sensitivity
 
   private void configureBindings() {
     drivetrain.setDefaultCommand( // Drivetrain will execute this command periodically
@@ -68,7 +67,7 @@ public class RobotContainer {
            return drive.withVelocityX(-lJoystick.getLeftY() * MaxSpeed/kDSpeedDiv) // Drive forward with
                                                                                            // negative Y (forward)
             .withVelocityY(-lJoystick.getLeftX() * MaxSpeed/kDSpeedDiv) // Drive left with negative X (left)
-            .withRotationalRate(-lJoystick.getRightX()/kAAngleDiv * MaxAngularRate);
+            .withRotationalRate(-lJoystick.getRightX() * MaxAngularRate); // Swerve with bottom stick
             
          } // Drive counterclockwise with negative X (left)
         ));
@@ -79,38 +78,58 @@ public class RobotContainer {
       // lJoystick.x().whileTrue(drivetrain.applyRequest(() -> drive.withRotationalRate(MaxAngularRate)));
       // lJoystick.y().whileTrue(drivetrain.applyRequest(() -> drive.withRotationalRate(MaxAngularRate * -1)));
 
-    // reset the field-centric heading on left bumper press
-    //joystick.leftBumper().onTrue(drivetrain.runOnce(() -> drivetrain.seedFieldRelative()));
-
     if (Utils.isSimulation()) {
       drivetrain.seedFieldRelative(new Pose2d(new Translation2d(), Rotation2d.fromDegrees(90)));
     }
     drivetrain.registerTelemetry(logger::telemeterize);
 
+    /* Thanks to Team  Bread for helping us create Climb code */
 
-    lJoystick.x().onTrue(
+    lJoystick.rightTrigger().onTrue(
       new InstantCommand(() -> {
-        lClimber.set(0.5);
         rClimber.set(0.5);
       })
     );
-    lJoystick.x().onFalse(
+
+    lJoystick.rightTrigger().onFalse(
       new InstantCommand(() -> {
-        lClimber.set(0);
         rClimber.set(0);
       })
     );
-    lJoystick.y().onTrue(
+
+    lJoystick.rightBumper().onTrue(
       new InstantCommand(() -> {
-        lClimber.set(-0.5);
         rClimber.set(-0.5);
       })
     );
 
-    lJoystick.y().onFalse(
+    lJoystick.rightBumper().onFalse(
+      new InstantCommand(() -> {
+        rClimber.set(0);
+      })
+    );
+
+    lJoystick.leftBumper().onFalse(
       new InstantCommand(() -> {
         lClimber.set(0);
-        rClimber.set(0);
+      })
+    );
+
+    lJoystick.leftBumper().onTrue(
+      new InstantCommand(() -> {
+        lClimber.set(-0.5);
+      })
+    );
+
+    lJoystick.leftTrigger().onTrue(
+      new InstantCommand(() -> {
+        lClimber.set(0.5);
+      })
+    );
+
+    lJoystick.leftTrigger().onFalse(
+      new InstantCommand(() -> {
+        lClimber.set(0);
       })
     );
   }
@@ -121,6 +140,7 @@ public class RobotContainer {
   }
  
   public Command getAutonomousCommand() {
-    return runAuto1;
+    //eturn new exampleAuto(s_Swerve);
+    return new InstantCommand();
   }
 }
