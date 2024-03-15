@@ -1,0 +1,168 @@
+[33mcommit bc5e9e4a7e3ddb429b31f803102ae6064938c8cd[m[33m ([m[1;36mHEAD -> [m[1;32mArm-&-Updated-Controller[m[33m)[m
+Author: CosimoAho <c3000funnypenguin@icloud.com>
+Date:   Tue Mar 12 10:34:04 2024 -0700
+
+    remaped controlls & optimized swerve function
+
+[33mcommit 6fab230bad266f16bda1de2d511624f1f2042cca[m[33m ([m[1;32m2024-competition[m[33m)[m
+Merge: d798740 03de60c
+Author: CosimoAho <c3000funnypenguin@icloud.com>
+Date:   Sat Mar 9 16:39:37 2024 -0800
+
+    Merge branch '2024-climber-toast' into 2024-competition
+
+[33mcommit 03de60ca3b31d1694b855c3b6b1445619bad971e[m[33m ([m[1;32m2024-climber-toast[m[33m)[m
+Author: CosimoAho <c3000funnypenguin@icloud.com>
+Date:   Sat Mar 9 16:28:46 2024 -0800
+
+    Added basic version of climer code, thanks to Team Toast
+
+[33mcommit d798740e95dffb72d667c4d1383efcfeb37892d1[m
+Author: Aidan-Ta <150493675+Aidan-Ta@users.noreply.github.com>
+Date:   Sat Mar 9 16:11:09 2024 -0800
+
+    added middle path auto
+
+[33mcommit 7fce2369b99db12ea063d0d75384ae7c9593fb9b[m
+Author: Aidan-Ta <150493675+Aidan-Ta@users.noreply.github.com>
+Date:   Sat Mar 9 12:10:44 2024 -0800
+
+    hopfully fixed middle path
+
+[33mcommit 62771f370aad00f150a0cf8ee0f02dd65ca0d6bf[m
+Author: Aidan-Ta <150493675+Aidan-Ta@users.noreply.github.com>
+Date:   Sat Mar 9 08:31:44 2024 -0800
+
+    added phoinex libbray
+
+[33mcommit 9fe5fdc3b7b308a0203241d6dd229df735174308[m
+Author: Rob <rob@mymail.com>
+Date:   Fri Mar 8 17:54:50 2024 -0800
+
+    Added autonomous pathplanner code
+
+[33mcommit 546574c1b5bab0809f3553b29453680bd53de560[m
+Author: CosimoAho <c3000funnypenguin@icloud.com>
+Date:   Fri Mar 8 17:12:45 2024 -0800
+
+    increased deadband on rotational axis, decreased rotational velocity
+
+[33mcommit 2bb232028a737a90b0c90bb13f8e9376d07afda7[m
+Author: CosimoAho <c3000funnypenguin@icloud.com>
+Date:   Fri Mar 8 16:26:58 2024 -0800
+
+    working shooter
+
+[33mcommit d5ad2eb1431a5e758c39432109ff3129d6ec6f8c[m
+Author: CosimoAho <c3000funnypenguin@icloud.com>
+Date:   Fri Mar 8 09:00:37 2024 -0800
+
+    at compition
+
+[33mcommit 3c2102a2ecbd01a14c385f4ec8fd16b953886360[m
+Author: Aidan-Ta <150493675+Aidan-Ta@users.noreply.github.com>
+Date:   Thu Mar 7 16:50:29 2024 -0800
+
+    private final CommandXboxController joystick = new CommandXboxController(0); //
+
+[33mcommit d011d411e03765a5e7361a3c12a94a7d2074e87d[m[33m ([m[1;32mauto-code[m[33m)[m
+Author: Aidan-Ta <150493675+Aidan-Ta@users.noreply.github.com>
+Date:   Wed Mar 6 15:25:42 2024 -0800
+
+    sorry for the late commit
+
+[33mcommit 1326674813240a76d654acfc6e054f367930b70d[m
+Author: CosimoAho <c3000funnypenguin@icloud.com>
+Date:   Tue Mar 5 16:49:08 2024 -0800
+
+    add freshly baked code
+    
+    fresh out of da oven
+
+[33mcommit 69bd54ce4f49c8d0c6834ad9a695b99ed269b450[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m
+Author: CosimoAho <c3000funnypenguin@icloud.com>
+Date:   Sat Mar 2 15:56:01 2024 -0800
+
+    new swerveCanCoderConfig & new CAN numbering
+    
+    Co-Authored-By: Nathan Lie <lie4nathan@gmail.com>
+
+[33mcommit 4d2e0599af922be2534a3b4575a58af4349bbb55[m
+Author: CosimoAho <c3000funnypenguin@icloud.com>
+Date:   Tue Feb 27 10:06:49 2024 -0800
+
+    updated semi working swerve code
+    
+    certain issues with swerve functionality have been fixed, however the sensitivity of the swerve drives become more and more sensitive everytime we move the robot using the xbox controller. drive motors are not currently working either.
+
+[33mcommit 867d8cb689de865a65b5584b016e3aaee8419fc7[m
+Author: AIdanTa <aidantarte@gmail.com>
+Date:   Sun Feb 18 11:24:04 2024 -0800
+
+    added shooter code
+
+[33mcommit 1c8d9d5f2538f53f46f750bb4aa981034d64b0a3[m[33m ([m[1;31morigin/Shooter[m[33m)[m
+Author: Cosimo Aho <115420943+MrFunnyPenguin@users.noreply.github.com>
+Date:   Fri Feb 16 08:27:53 2024 -0800
+
+    Create README.md
+
+[33mcommit b56db78b25edae37d5dff7aa8d70c2849486295f[m
+Merge: 5eddf40 2e28a31
+Author: Nathan Lie <lie4nathan@gmail.com>
+Date:   Thu Feb 15 18:44:02 2024 -0800
+
+    Merge pull request #7 from Aidan-Ta/nl-phoenix-6-migration
+    
+    fix: use correct neutral mode values
+
+[33mcommit 2e28a313fb50e5b5ffa5388bebf3bd7c22ff94fe[m
+Author: Nathan Lie <lie4nathan@gmail.com>
+Date:   Thu Feb 15 18:43:23 2024 -0800
+
+    fix: use correct neutral mode values
+
+[33mcommit 5eddf4046deccdaedd2ee8b259a93191a38f19a1[m
+Merge: 2d4cca4 3ef34c3
+Author: Nathan Lie <lie4nathan@gmail.com>
+Date:   Thu Feb 15 18:24:38 2024 -0800
+
+    Merge pull request #6 from Aidan-Ta/nl-phoenix-6-migration
+    
+    feat: phoenix 6 migration
+
+[33mcommit 3ef34c353ee0ca20223c054179bc87e9228491db[m
+Author: Nathan Lie <lie4nathan@gmail.com>
+Date:   Thu Feb 15 18:23:44 2024 -0800
+
+    fix: use supplycurrentlimit instead of statorcurrentlimit
+
+[33mcommit 67a6da56c8ac1aa927416417ae44227a35ffbfa6[m
+Author: Nathan Lie <lie4nathan@gmail.com>
+Date:   Thu Feb 15 18:15:59 2024 -0800
+
+    fix: build errors in constants.java, remove unused vars
+
+[33mcommit 18ebb86971f1e6c4b56e79020a0ea18eaaa9e9a9[m
+Author: Nathan Lie <lie4nathan@gmail.com>
+Date:   Thu Feb 15 18:10:17 2024 -0800
+
+    fix: build errors in swerve module
+
+[33mcommit 37e80c8486187a18d3a0f973e1b9ae4d684398e4[m
+Author: Nathan Lie <lie4nathan@gmail.com>
+Date:   Mon Feb 12 17:43:29 2024 -0800
+
+    feat: fix build errors in CTREConfigs.java
+
+[33mcommit 2d4cca48b1fb7e035f66c170e9d3a678a98907ba[m[33m ([m[1;32mP6code[m[33m)[m
+Author: AIdanTa <aidantarte@gmail.com>
+Date:   Fri Feb 9 13:39:22 2024 -0800
+
+    fixed some bugs
+
+[33mcommit 2d5e52c4ff6ef60690afba8a5b46b4543ffd9b02[m
+Author: Tanfred <high.elf.rouge@gmail.com>
+Date:   Mon Jan 22 18:01:24 2024 -0800
+
+    first commit for 2024
