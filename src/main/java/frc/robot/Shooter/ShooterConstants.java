@@ -25,8 +25,8 @@ public final class ShooterConstants {
     public static final int kLauncherID = 22;
 
     // Current limit for launcher and feed wheels
-    public static final int kLauncherCurrentLimit = 100;
-    public static final int kFeedCurrentLimit = 100;
+    public static final int kLauncherCurrentLimit = 120; 
+    public static final int kFeedCurrentLimit = 75; // 75 is optimal
 
     // Speeds for wheels when intaking and launching. Intake speeds are negative to run the wheels
     // in reverse

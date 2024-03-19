@@ -40,7 +40,7 @@ public class RobotContainer {
   private final TalonFX rClimber = new TalonFX(30);
 
   private double MaxSpeed = TunerConstants.kSpeedAt12VoltsMps; // kSpeedAt12VoltsMps desired top speed
-  private double MaxAngularRate =(1.25/3.0) * Math.PI; // 62% of a rotation per second max angular velocity
+  private double MaxAngularRate =(1.10/3.0) * Math.PI; // 1.25 (62% of a rotation per second max angular velocity) was too slow
 
   /* Setting up bindings for necessary control of the swerve drive platform */
   public final CommandXboxController lJoystick = new CommandXboxController(0); // My joystick
@@ -64,9 +64,9 @@ public class RobotContainer {
   private void configureBindings() {
     drivetrain.setDefaultCommand( // Drivetrain will execute this command periodically
         drivetrain.applyRequest(()  ->  {
-           return drive.withVelocityX(-lJoystick.getLeftY() * MaxSpeed/kDSpeedDiv) // Drive forward with
+           return drive.withVelocityX(lJoystick.getLeftY() * MaxSpeed/kDSpeedDiv) // Drive forward with
                                                                                            // negative Y (forward)
-            .withVelocityY(-lJoystick.getLeftX() * MaxSpeed/kDSpeedDiv) // Drive left with negative X (left)
+            .withVelocityY(lJoystick.getLeftX() * MaxSpeed/kDSpeedDiv) // Drive left with negative X (left)
             .withRotationalRate(-lJoystick.getRightX() * MaxAngularRate); // Swerve with bottom stick
             
          } // Drive counterclockwise with negative X (left)
