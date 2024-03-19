@@ -9,12 +9,14 @@ import frc.robot.commands.LaunchNote;
 import frc.robot.commands.PrepareLaunch;
 import frc.robot.Shooter.ShooterConstants;
 import frc.robot.Shooter.ShooterConstants.LauncherConstants;
-
 import static frc.robot.Shooter.ShooterConstants.LauncherConstants.kLaunchFeederSpeed;
+import com.kauailabs.navx.frc.AHRS;
+import edu.wpi.first.wpilibj.SerialPort;
 
 import com.ctre.phoenix6.Utils;
 import com.ctre.phoenix6.mechanisms.swerve.SwerveRequest;
 import com.ctre.phoenix6.mechanisms.swerve.SwerveModule.DriveRequestType;
+import com.fasterxml.jackson.databind.SerializationFeature;
 
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
@@ -30,6 +32,10 @@ import frc.robot.generated.TunerConstants;
 //import frc.robot.Arms.ArmContainer;
 
 public class RobotContainer {
+  
+  private final AHRS navx;
+ 
+    
   private final Joystick Rdriver = new Joystick(1);
   private final Joystick Ldriver = new Joystick(0); 
 
@@ -42,8 +48,6 @@ public class RobotContainer {
   private final CommandSwerveDrivetrain drivetrain = TunerConstants.DriveTrain; // My drivetrain
 
   private Command runAuto1 = drivetrain.getAutoPath("middle");
-  private Command runAuto2 = drivetrain.getAutoPath("right");
-  private Command runAuto3 = drivetrain.getAutoPath("left");
 
   private final SwerveRequest.FieldCentric drive = new SwerveRequest.FieldCentric()
       .withDeadband(MaxSpeed * 0.1).withRotationalDeadband(MaxAngularRate * 0.50) // Add a 10% deadband
@@ -60,9 +64,9 @@ public class RobotContainer {
     drivetrain.setDefaultCommand( // Drivetrain will execute this command periodically
         drivetrain.applyRequest(()  ->  {
           System.out.println("joystick.getRightX=" + -lJoystick.getRightX() );
-           return drive.withVelocityX(-lJoystick.getLeftY() * MaxSpeed/kDSpeedDiv) // Drive forward with
+           return drive.withVelocityX(lJoystick.getLeftY() * MaxSpeed/kDSpeedDiv) // Drive forward with
                                                                                            // negative Y (forward)
-            .withVelocityY(-lJoystick.getLeftX() * MaxSpeed/kDSpeedDiv) // Drive left with negative X (left)
+            .withVelocityY(lJoystick.getLeftX() * MaxSpeed/kDSpeedDiv) // Drive left with negative X (left)
             .withRotationalRate(-lJoystick.getRightX()/kAAngleDiv * MaxAngularRate);
             
          } // Drive counterclockwise with negative X (left)
@@ -85,6 +89,7 @@ public class RobotContainer {
 
 
   public RobotContainer() {
+    navx = new AHRS(SerialPort.Port.kMXP);
     configureBindings();
   }
  
@@ -93,5 +98,15 @@ public class RobotContainer {
     SwerveRequest driveForward = new SwerveRequest.RobotCentric().withVelocityX(.5);
 
     return drivetrain.run(() -> drivetrain.setControl(driveForward));
+  }
+
+  public void teleopPeriodic()
+  {
+    double roll = navx.getRoll();
+    System.out.println("roll = "+ roll);
+      double yaw = navx.getYaw();
+    System.out.println("yaw = "+ yaw);
+      double pitch = navx.getPitch();
+    System.out.println("pitch = "+ pitch);
   }
 }
